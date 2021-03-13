@@ -2,7 +2,7 @@ import Express from "express";
 import {totalmen} from "os";
 
 const App = Express();
-const port = 3002;
+const port = 45030;
 
 
 
@@ -22,7 +22,7 @@ const names = [
 ];
 
 App.get('/people/:person', (req, res) => {
-let person = req.params.title;
+let person = req.params.person;
 if (people.includes(person)){
   res.json({Person: person})
 } else
@@ -32,7 +32,7 @@ if (people.includes(person)){
 
 
 App.get('/search/:name', (req, res) => {
-  const result = people.filter(str => str.includes(req.params.title)});
+  const result = people.filter(str => str.includes(req.params.person)});
 
     if (result !=0) {
       res.json({ search: result});
