@@ -25,14 +25,14 @@ App.get('/people/:person', (req, res) => {
 let person = req.params.person;
 if (people.includes(person)){
   res.json({Person: person})
-} else
+} else {
     res.json({Person:"Not available"});
 }
 });
 
 
 App.get('/search/:name', (req, res) => {
-  const result = people.filter(str => str.includes(req.params.person)});
+  const result = people.filter(str => str.includes(req.params.person));
 
     if (result !=0) {
       res.json({ search: result});
