@@ -1,0 +1,88 @@
+<html>
+<body>
+    <script>
+      function readAge(event)
+
+          event.preventDefault();
+
+          let element = document.querySelector("#age");
+
+          fetch("/employee/name/age" + element.value)
+          .then(res) => {
+            return res.json();
+          })
+
+            .then((processed) => {
+
+                let reporting = document.querySelector("reportingArea");
+
+                if (processed.error) {
+                  reporting.innerHTML = processed.error;
+                } else {
+                    reporting.innerHTML = processed.name;
+                }
+            });
+        }
+
+        function readName(event) {
+
+          event.preventDefault();
+
+          let element = document.querySelector("name");
+
+          fetch("employee" + element.value)
+          .then((res) => {
+            return res.json();
+          })
+          .then((processed) => {
+
+            // Find the element with 'id="reportngArea"'
+            let reporting = document.querySelector("reportingArea");
+
+            // Does the 'processed' object have a property
+            if(processed.error) {
+              reporting.innerHTML = processed.error;
+            } else {
+                reporting.innerHTML = processed.age;
+            }
+
+          });
+        }
+
+        function createEmployee(event) {
+          event.preventDefault();
+
+          let name = document.querySelector("#employeeName");
+
+          let age = document.querySelector("employeeAge");
+
+          fetch("/employee/name/" + name.value + "/" + age.value, {
+            "method": "post"
+          }).then((res) => {
+            return res.json();
+          }).then((processed) => {
+              console.log(processed);
+          });
+        }
+      </script>
+      <h2>Age</h2>
+      <form onsubmit="readAge(event)">
+        <input id="age" type="text">
+        <button>Submit</button>
+      </form>
+      <h2>Name</h2>
+      <form onsubmit="readName(event)">
+        <input id="name" type="text">
+        <button>Submit</button>
+      </form>
+      <hr>
+      <form onsubmit="createMovie(event)">
+        <input id="movieName" type="text">
+        <input id="movieAge" tye="text">
+      </form>
+      <hr>
+      <h2>Reporting</h2>
+      <div id="reportingArea"></div>
+  </body>
+
+</html>
