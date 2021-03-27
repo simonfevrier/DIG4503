@@ -37,7 +37,7 @@ App.get("ages/:number", (req,res) => {
 App.post("employee/:name/:age", (req, res)=> {
   let result = {
       "name": req.params.name,
-      "age": parseINT(req.params.score)
+      "age": parseINT(req.params.age)
   };
 
   database.push(result)
