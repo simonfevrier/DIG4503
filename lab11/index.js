@@ -1,4 +1,4 @@
-import MongoCLient from 'mongodb';
+import MongoClient from 'mongodb';
 
 const URL = "mongodb+srv://sfevrier:dozhaWpDIoeSaMAy@cluster0.oewwc.mongodb.net/";
 
