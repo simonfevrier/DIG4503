@@ -4,16 +4,16 @@ class NameSearch extends React.Component {
   readName(event) {
     event.preventDefault();
 
-    let element = document.querySelector("name");
+    let element = document.querySelector("#name");
 
-    fetch("employee" + element.value)
+    fetch("api/employee/name" + element.value)
     .then((res) => {
       return res.json();
     })
     .then((processed) => {
 
       // Find the element with 'id="reportngArea"'
-      let reporting = document.querySelector("reportingArea");
+      let reporting = document.querySelector("#reportingArea");
 
       // Does the 'processed' object have a property
       if(processed.error) {
@@ -23,10 +23,10 @@ class NameSearch extends React.Component {
       }
 
     });
-    element.value = "";
+          element.value = "";
     }
     render() {
-      return{
+      return(
           <div>
             <h2>Name</h2>
           <form onSubmit={this.readName}>
@@ -34,7 +34,7 @@ class NameSearch extends React.Component {
             <button>Submit</button>
           </form>
           </div>
-      }
+      )
     }
   }
 
