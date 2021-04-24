@@ -10,6 +10,7 @@ function App() {
     <AgeSearch/>
     <NameSearch/>
     <ReportingArea/>
+    
     </div>
   );
 }
