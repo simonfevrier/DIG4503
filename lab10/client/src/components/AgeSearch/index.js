@@ -1,7 +1,7 @@
 import React from "react";
 
 class AgeSearch extends React.Component {
-  readAge(event)
+  readAge(event) {
 
       // Stop (prevent) the "default" form action
       event.preventDefault();
@@ -9,14 +9,15 @@ class AgeSearch extends React.Component {
       // Find the element with 'id="age"'
       let element = document.querySelector("#age");
 
-      fetch("/employee/name/age" + element.value)
-      .then(res) => {
+      fetch("api/employee/age" + element.value)
+      .then((res) => {
+
         return res.json();
       })
 
         .then((processed) => {
 
-            let reporting = document.querySelector("reportingArea");
+            let reporting = document.querySelector("#reportingArea");
 
             if (processed.error) {
               reporting.innerHTML = processed.error;
