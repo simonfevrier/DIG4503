@@ -1,6 +1,6 @@
 import Express from "express";
 import fs from "fs";
-import cors = from "cors";
+import cors from "cors";
 
 const App = Express();
 const port = 3010;
@@ -24,7 +24,7 @@ App.get("employees/:name", (req, res) => {
   res.json(result);
 })
 
-App.get("ages/:number", (req,res) => {
+App.get("ages/:number", (req, res) => {
   let result = {"error": "not found"};
 
   database.forEach((value) => {
